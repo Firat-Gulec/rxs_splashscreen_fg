@@ -1,5 +1,3 @@
-
-
 import 'package:casbin/casbin.dart';
 
 class UserModel {

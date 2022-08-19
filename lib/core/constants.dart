@@ -10,5 +10,5 @@ class AppConstant {
   // ignore: constant_identifier_names
   static const RU_LOCALE = Locale("ru", "RU");
   // ignore: constant_identifier_names
-  static const LANG_PATH = "assets/lang/";
+  static const LANG_PATH = "assets/lang";
 }

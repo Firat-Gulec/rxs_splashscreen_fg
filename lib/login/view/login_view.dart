@@ -1,22 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
 import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/circular_button.dart';
-
 import 'package:rxs_spashscreen_fg/login/model/social_login_interface.dart';
-
 import 'package:rxs_spashscreen_fg/login/model/user_model.dart';
-
 import 'package:rxs_spashscreen_fg/login/service/login_service.dart';
-
-
 import 'package:rxs_spashscreen_fg/core/widget/icon/social_icon.dart';
-import 'package:rxs_spashscreen_fg/core/widget/input/input_field.dart';
+
 import 'package:rxs_spashscreen_fg/core/widget/input/normal_input_field.dart';
 import 'package:rxs_spashscreen_fg/core/widget/input/password_input_field.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/custom_padding.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/or_divider.dart';
 import 'package:rxs_spashscreen_fg/core/widget/sheet/select_sheet.dart';
+
 
 class LoginView extends StatefulWidget {
   LoginView({Key? key}) : super(key: key);
@@ -36,7 +34,7 @@ class _LoginViewState extends State<LoginView>
     if (password == "") {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Kullanıcı adı veya Şifre boş geçilemez!"),
+          content: Text("Kullanici adi veya Şifre boş geçilemez!"),
         ),
       );
     }
@@ -47,14 +45,14 @@ class _LoginViewState extends State<LoginView>
     if (login(name, password)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Giriş Başarılı!"),
+          content: Text("Giriş Başarili!"),
           
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Kullanıcı adı veya şifre yanlış. Lütfen tekrar deneyiniz!"),
+          content: Text("Kullanici adi veya şifre yanliş. Lütfen tekrar deneyiniz!"),
         ),
       );
     }
@@ -165,11 +163,11 @@ class _LoginViewState extends State<LoginView>
                           data: Theme.of(context),
                           controller: usernameInput,
                           onChanged: (text) {},
-                          title: "Sicil Numarası veya Kullanıcı Adı"),
+                          title: LocaleKeys.login_username.tr()),
                       Padding(padding: CustomPadding()),
                       PasswordInputField(
                           controller: passwordInput,
-                          title: "Şifre",
+                          title: LocaleKeys.login_password.tr(),
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(() {
@@ -220,7 +218,7 @@ class _LoginViewState extends State<LoginView>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Hesabın yok mu?"),
+                          Text("Hesabin yok mu?"),
                           const Padding(padding: EdgeInsets.all(5)),
                           GestureDetector(
                             child: Text("Kaydol",
