@@ -30,6 +30,8 @@ dependencies:
   provider: ^6.0.2
   shared_preferences: ^2.0.15
   easy_localization: ^3.0.1
+  supabase_flutter: ^0.3.3
+  
   casbin: ^0.1.0
   flutter:
     sdk: flutter

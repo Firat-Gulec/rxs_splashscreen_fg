@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:rxs_spashscreen_fg/core/Init/lang/language_manager.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_route.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_service.dart';
@@ -8,10 +9,18 @@ import 'package:rxs_spashscreen_fg/core/Init/provider/theme_provider.dart';
 
 import 'package:rxs_spashscreen_fg/core/auth_manager.dart';
 import 'package:rxs_spashscreen_fg/core/constants.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await EasyLocalization.ensureInitialized();
+ await Supabase.initialize(
+    url: 'https://sgulfrkzsmagewgaqqhe.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNndWxmcmt6c21hZ2V3Z2FxcWhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjExNzAwNDcsImV4cCI6MTk3Njc0NjA0N30.HkbBzlqSQyuPIQI4o47uW5blE8ojmBQGLLIzxoVheSg',
+  );
+  
 
   runApp(
     MultiProvider(
@@ -22,6 +31,7 @@ void main() async {
         ChangeNotifierProvider<ThemeProvider>(
           create: ((context) => ThemeProvider()),
         ),
+        
       ],
       child: EasyLocalization(
         child: MyApp(),

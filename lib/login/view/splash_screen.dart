@@ -3,7 +3,8 @@
 import 'dart:async';
 import 'package:casbin/casbin.dart';
 import 'package:flutter/material.dart';
-
+import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 import 'package:provider/src/provider.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_service.dart';
@@ -22,7 +23,7 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with CacheManager {
+class _SplashScreenState extends AuthState<SplashScreen> with CacheManager {
   bool _isVisible = true;
   NavigationService navigation = NavigationService.instance;
   late final String userName;
@@ -58,6 +59,7 @@ class _SplashScreenState extends State<SplashScreen> with CacheManager {
     Timer(const Duration(milliseconds: 2000), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
+        recoverSupabaseSession();
         loadUserId();
         navigateString = prefs.getString("navigate") ?? "/login";
         readAuthManager().fetchUserLogin();
