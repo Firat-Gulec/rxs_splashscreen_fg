@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
 import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/circular_button.dart';
@@ -8,12 +7,14 @@ import 'package:rxs_spashscreen_fg/login/model/social_login_interface.dart';
 import 'package:rxs_spashscreen_fg/login/model/user_model.dart';
 import 'package:rxs_spashscreen_fg/login/service/login_service.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/social_icon.dart';
-
 import 'package:rxs_spashscreen_fg/core/widget/input/normal_input_field.dart';
 import 'package:rxs_spashscreen_fg/core/widget/input/password_input_field.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/custom_padding.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/or_divider.dart';
 import 'package:rxs_spashscreen_fg/core/widget/sheet/select_sheet.dart';
+
+import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 
 class LoginView extends StatefulWidget {
@@ -23,7 +24,7 @@ class LoginView extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView>
+class _LoginViewState extends AuthState<LoginView>
     with CacheManager, SingleTickerProviderStateMixin {
   final ISocialLogin _facebookLogin = FacebookLogin();
   final ISocialLogin _googleLogin = GoogleLogin();
