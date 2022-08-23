@@ -9,7 +9,7 @@ import 'Init/navigation/navigation_service.dart';
 class AuthState<T extends StatefulWidget> extends SupabaseAuthState<T> {
   @override
   NavigationService navigation = NavigationService.instance;
- String navigateString = '/profile_view';
+ late String navigateString; 
   void onUnauthenticated() {
     if (mounted) {
       navigateString = "/login";

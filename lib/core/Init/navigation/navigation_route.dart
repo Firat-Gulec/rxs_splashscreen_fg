@@ -15,17 +15,19 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
-    case NavigationConstants.DEFAULT:
+      case NavigationConstants.DEFAULT:
         return normalNavigate(
-           // const SplashScreen(title: 'Splash Screen'), NavigationConstants.DEFAULT);  
-SplashPage(),NavigationConstants.DEFAULT);
+            // const SplashScreen(title: 'Splash Screen'), NavigationConstants.DEFAULT);
+            SplashScreen(title: 'RXS'),
+            NavigationConstants.DEFAULT);
+            
       case NavigationConstants.LOGIN:
-        return normalNavigate( LoginPage(), NavigationConstants.LOGIN);
+        return normalNavigate(LoginView(), NavigationConstants.LOGIN);
 
-   case NavigationConstants.PROFILE_VIEW:
+      case NavigationConstants.PROFILE_VIEW:
         return normalNavigate(
-            const AccountPage(), NavigationConstants.PROFILE_VIEW); 
- /*  
+            const AccountPage(), NavigationConstants.PROFILE_VIEW);
+      /*  
       case NavigationConstants.ON_BOARD:
         return normalNavigate(
             const WelcomeView(), NavigationConstants.ON_BOARD);
@@ -50,7 +52,7 @@ SplashPage(),NavigationConstants.DEFAULT);
       default:
         return MaterialPageRoute(
           builder: (context) => const WelcomeView(),
-        );  
+        );
     }
   }
 

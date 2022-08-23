@@ -34,7 +34,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
     final data = response.data;
     if (data != null) {
       _usernameController.text = (data['username'] ?? '') as String;
-      _websiteController.text = (data['website'] ?? '') as String;
+      _websiteController.text = (data['user_role'] ?? '') as String;
     }
     setState(() {
       _loading = false;
@@ -46,9 +46,14 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
     setState(() {
       _loading = true;
     });
+
+  
+  
+
     final userName = _usernameController.text;
     final website = _websiteController.text;
     final user = supabase.auth.currentUser;
+    print(user);
     final updates = {
       'id': user!.id,
       'username': userName,

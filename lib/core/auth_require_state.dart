@@ -15,7 +15,7 @@ class AuthRequiredState<T extends StatefulWidget>
       navigateString = "/login";
         
         print(navigateString);
-        navigation.navigateToPage(path: navigateString);
+   //     navigation.navigateToPage(path: navigateString);
      
     }
   }

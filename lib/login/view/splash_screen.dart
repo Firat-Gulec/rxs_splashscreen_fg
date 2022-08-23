@@ -59,7 +59,7 @@ class _SplashScreenState extends AuthState<SplashScreen> with CacheManager {
     Timer(const Duration(milliseconds: 2000), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-        recoverSupabaseSession();
+        //recoverSupabaseSession();
         loadUserId();
         navigateString = prefs.getString("navigate") ?? "/login";
         readAuthManager().fetchUserLogin();

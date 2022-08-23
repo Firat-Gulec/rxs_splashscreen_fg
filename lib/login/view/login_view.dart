@@ -14,6 +14,7 @@ import 'package:rxs_spashscreen_fg/core/widget/padding/or_divider.dart';
 import 'package:rxs_spashscreen_fg/core/widget/sheet/select_sheet.dart';
 
 import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+import 'package:rxs_spashscreen_fg/login/view/signup_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 
@@ -226,7 +227,10 @@ class _LoginViewState extends AuthState<LoginView>
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold)),
                             onTap: () {
-                              print("test");
+                              Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return  RegisterForm();
+                        }),);
                             },
                           )
                         ],
