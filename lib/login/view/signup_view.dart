@@ -34,7 +34,7 @@ class _RegisterFormState extends AuthState<RegisterForm> {
         .signIn(email: usernameInput.text, password: passwordInput.text);
   }
 
-  Future<void> _signIn() async {
+  Future<void> _signUp() async {
     setState(() {
       _isLoading = true;
     });
@@ -52,15 +52,14 @@ class _RegisterFormState extends AuthState<RegisterForm> {
       usernameInput.text = '';
       passwordInput.text = '';
       repasswordInput.text = '';
-     
-    }else {
-print('verify account');
+    } else {
+      print('verify account');
 
-     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const AccountPage();
-                        },
-                      )); 
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return const AccountPage();
+        },
+      ));
     }
 
     print(user?.id);
@@ -91,7 +90,7 @@ print('verify account');
                 child: Column(children: <Widget>[
                   Padding(padding: CustomPadding()),
                   Image.asset(
-              'assets/images/rixos_logo.png',
+                    'assets/images/rixos_logo.png',
                     width: size.width * 0.50,
                   ),
                   Padding(padding: CustomPadding()),
@@ -143,7 +142,7 @@ print('verify account');
                   CircularButton(
                     title: 'signup',
                     onPressed: () async {
-                      _signIn();
+                      _signUp();
                     },
                   ),
                 ])),

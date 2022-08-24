@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
 import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
+import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/circular_button.dart';
 import 'package:rxs_spashscreen_fg/login/model/social_login_interface.dart';
 import 'package:rxs_spashscreen_fg/login/model/user_model.dart';
@@ -17,7 +18,6 @@ import 'package:rxs_spashscreen_fg/core/auth_state.dart';
 import 'package:rxs_spashscreen_fg/login/view/signup_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
-
 class LoginView extends StatefulWidget {
   LoginView({Key? key}) : super(key: key);
 
@@ -27,11 +27,10 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends AuthState<LoginView>
     with CacheManager, SingleTickerProviderStateMixin {
-  final ISocialLogin _facebookLogin = FacebookLogin();
-  final ISocialLogin _googleLogin = GoogleLogin();
+  final String loginProvider = 'email';
   // final ISocialLogin _twitterLogin = TwitterLogin();
 
-  Future<void> _checknamepassControl(String password) async {
+  Future<void> _checknamepassControl(String name, String password) async {
     await Future.delayed(const Duration(seconds: 1));
     if (password == "") {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -39,24 +38,17 @@ class _LoginViewState extends AuthState<LoginView>
           content: Text("Kullanici adi veya Şifre boş geçilemez!"),
         ),
       );
-    }
-  }
-
-  Future<void> _checkUserControl(String name, String password) async {
-    await Future.delayed(const Duration(seconds: 1));
-    if (login(name, password)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Giriş Başarili!"),
-          
-        ),
-      );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Kullanici adi veya şifre yanliş. Lütfen tekrar deneyiniz!"),
-        ),
-      );
+      final res = await SupabaseHelper().signinExitingUser(name, password);
+      if (res.error?.message != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(res.error!.message),
+          ),
+        );
+      } else {
+        navigation.navigateToPage(path: '/profile_view');
+      }
     }
   }
 
@@ -108,30 +100,30 @@ class _LoginViewState extends AuthState<LoginView>
                 SocialIcon(
                     //  text: '',
                     iconSrc: 'assets/images/facebook.png',
-                    onPressed: () async {
-                      await _facebookLogin.login();
-                    }),
+                    onPressed: (() async {
+                      setState(() {});
+                    })),
                 Padding(padding: CustomPadding()),
                 SocialIcon(
                     //   text: '',
                     iconSrc: 'assets/images/google.png',
-                    onPressed: () async {
-                      await _googleLogin.login();
-                    }),
+                    onPressed: (() async {
+                      setState(() {});
+                    })),
                 Padding(padding: CustomPadding()),
                 SocialIcon(
                     //  text: '',
                     iconSrc: 'assets/images/twitter.png',
-                    onPressed: () async {
-                      await _facebookLogin.login();
-                    }),
+                    onPressed: (() async {
+                      setState(() {});
+                    })),
                 Padding(padding: CustomPadding()),
                 SocialIcon(
                     //  text: '',
                     iconSrc: 'assets/images/finger.png',
-                    onPressed: () async {
-                      await _facebookLogin.login();
-                    }),
+                    onPressed: (() async {
+                      setState(() {});
+                    })),
               ],
             ),
             //Input Login
@@ -204,14 +196,10 @@ class _LoginViewState extends AuthState<LoginView>
                         title: "Oturum Aç",
                         onPressed: () async {
                           setState(() {
-                            if (passwordInput.text == "") {
-                              _checknamepassControl(passwordInput.text);
-                            } else {
-                              _checkUserControl(
-                                  usernameInput.text, passwordInput.text);
-                              LoginService().loginUser(
-                                  usernameInput.text, passwordInput.text);
-                            }
+                            _checknamepassControl(
+                                usernameInput.text, passwordInput.text);
+                            LoginService().setLoginUser(
+                                usernameInput.text, passwordInput.text);
                           });
                         },
                       ),
@@ -227,10 +215,12 @@ class _LoginViewState extends AuthState<LoginView>
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold)),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return  RegisterForm();
-                        }),);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return RegisterForm();
+                                }),
+                              );
                             },
                           )
                         ],
