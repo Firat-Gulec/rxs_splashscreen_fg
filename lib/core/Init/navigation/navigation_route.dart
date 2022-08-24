@@ -18,7 +18,8 @@ class NavigationRoute {
       case NavigationConstants.DEFAULT:
         return normalNavigate(
             // const SplashScreen(title: 'Splash Screen'), NavigationConstants.DEFAULT);
-            SplashScreen(title: 'RXS'),
+            //SplashScreen(title: 'RXS'),
+            SplashPage(),
             NavigationConstants.DEFAULT);
             
       case NavigationConstants.LOGIN:

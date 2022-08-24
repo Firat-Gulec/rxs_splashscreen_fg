@@ -55,12 +55,12 @@ class _RegisterFormState extends AuthState<RegisterForm> {
      
     }else {
 print('verify account');
-/*
+
      Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return const AccountPage();
                         },
-                      )); */
+                      )); 
     }
 
     print(user?.id);
