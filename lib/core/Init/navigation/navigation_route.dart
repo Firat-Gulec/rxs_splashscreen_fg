@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/login/view/account_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/login_view.dart';
-import 'package:rxs_spashscreen_fg/login/view/splash_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/splash_screen.dart';
 import 'package:rxs_spashscreen_fg/login/view/welcome_view.dart';
 
@@ -18,7 +17,7 @@ class NavigationRoute {
         return normalNavigate(
             // const SplashScreen(title: 'Splash Screen'), NavigationConstants.DEFAULT);
             //SplashScreen(title: 'RXS'),
-            SplashPage(),
+            SplashScreen(title: 'RXS'),
             NavigationConstants.DEFAULT);
             
       case NavigationConstants.LOGIN:
