@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/auth_require_state.dart';
+import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/constants.dart';
 import 'package:supabase/supabase.dart';
 
@@ -11,7 +12,7 @@ class AccountPage extends StatefulWidget {
   _AccountPageState createState() => _AccountPageState();
 }
 
-class _AccountPageState extends AuthRequiredState<AccountPage> {
+class _AccountPageState extends AuthRequiredState<AccountPage> with CacheManager  {
   final _usernameController = TextEditingController();
   final _websiteController = TextEditingController();
   var _loading = false;
@@ -74,6 +75,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
 
   Future<void> _signOut() async {
     final response = await supabase.auth.signOut();
+    clearCache();
     final error = response.error;
     if (error != null) {
       context.showErrorSnackBar(message: error.message);

@@ -37,6 +37,11 @@ class CacheManager {
     return prefs.getString('loadstring');
   }
 
+  Future<void> clearCache() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
+
   Future<String?> getUserLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('name');

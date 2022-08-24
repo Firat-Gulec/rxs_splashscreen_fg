@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:casbin/casbin.dart';
 import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 import 'package:provider/src/provider.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
@@ -39,27 +40,17 @@ class _SplashScreenState extends AuthState<SplashScreen> with CacheManager {
     setState(() {
       userName = prefs.getString("name") ?? "null";
       userPass = prefs.getString("password") ?? "null";
-
-      if (userName != "null") {
-        model = Model()..loadModelFromText(getModel());
-        enforcer = Enforcer.fromModelAndAdapter(model);
-        getPolicy().split('\n').forEach((element) {
-          final user = element.split(',')[1].trim();
-          final permission = element.split(',').sublist(2);
-          enforcer.addPermissionForUser(user, permission);
-        });
-        context.read<AuthenticationManager>().model =
-            UserModel(name: userName, pass: userPass, enForcer: enforcer);
-        navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW);
-      }
     });
+    if (userName != "null") {
+      final res = await SupabaseHelper().signinExitingUser(userName, userPass);
+      navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW);
+    }
   }
 
   _SplashScreenState() {
     Timer(const Duration(milliseconds: 2000), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-        
         loadUserId();
         navigateString = prefs.getString("navigate") ?? "/login";
         readAuthManager().fetchUserLogin();

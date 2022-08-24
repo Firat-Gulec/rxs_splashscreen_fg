@@ -33,19 +33,14 @@ class _LoginViewState extends AuthState<LoginView>
   Future<void> _checknamepassControl(String name, String password) async {
     await Future.delayed(const Duration(seconds: 1));
     if (password == "") {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Kullanici adi veya Şifre boş geçilemez!"),
-        ),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Kullanici adi veya Şifre boş geçilemez!"),
+      ));
     } else {
       final res = await SupabaseHelper().signinExitingUser(name, password);
       if (res.error?.message != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(res.error!.message),
-          ),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(res.error!.message)));
       } else {
         navigation.navigateToPage(path: '/profile_view');
       }
