@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/login/view/account_page.dart';
-import 'package:rxs_spashscreen_fg/login/view/login_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/login_view.dart';
 import 'package:rxs_spashscreen_fg/login/view/splash_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/splash_screen.dart';
