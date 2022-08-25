@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/login/view/account_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/login_view.dart';
+import 'package:rxs_spashscreen_fg/login/view/signup_view.dart';
 import 'package:rxs_spashscreen_fg/login/view/splash_screen.dart';
 import 'package:rxs_spashscreen_fg/login/view/welcome_view.dart';
 
@@ -26,11 +27,15 @@ class NavigationRoute {
       case NavigationConstants.PROFILE_VIEW:
         return normalNavigate(
             const AccountPage(), NavigationConstants.PROFILE_VIEW);
-      /*  
+
+            case NavigationConstants.PROFILE_SIGNUP:
+        return normalNavigate(
+            const RegisterForm(), NavigationConstants.PROFILE_SIGNUP);
+       
       case NavigationConstants.ON_BOARD:
         return normalNavigate(
             const WelcomeView(), NavigationConstants.ON_BOARD);
-
+ /*
       case NavigationConstants.QUESTIONNAIRE:
         return normalNavigate(
             const WelcomeSurveyView(), NavigationConstants.QUESTIONNAIRE);

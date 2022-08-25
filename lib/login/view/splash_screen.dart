@@ -39,6 +39,7 @@ class _SplashScreenState extends AuthState<SplashScreen> with CacheManager {
   loadUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
+      recoverSupabaseSession();
       userName = prefs.getString("name") ?? "null";
       userPass = prefs.getString("password") ?? "null";
     });
@@ -62,6 +63,7 @@ class _SplashScreenState extends AuthState<SplashScreen> with CacheManager {
     });
     Timer(const Duration(milliseconds: 10), () {
       setState(() {
+        
         _isVisible =
             true; // Now it is showing fade effect and navigating to Login page
       });

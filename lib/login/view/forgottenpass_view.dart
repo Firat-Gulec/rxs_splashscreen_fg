@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_state.dart';
+import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
+import 'package:rxs_spashscreen_fg/core/constants.dart';
+import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/circular_button.dart';
 import 'package:rxs_spashscreen_fg/core/widget/input/normal_input_field.dart';
-
-
 
 class ForgottenColumn extends StatefulWidget {
   const ForgottenColumn({Key? key}) : super(key: key);
@@ -11,8 +14,8 @@ class ForgottenColumn extends StatefulWidget {
   _ForgottenColumnState createState() => _ForgottenColumnState();
 }
 
-class _ForgottenColumnState extends State<ForgottenColumn> {
-  final String _title = "Şifre Gönder";
+class _ForgottenColumnState extends AuthState<ForgottenColumn> {
+  final String _title = LocaleKeys.login_forgotText.tr();
   TextEditingController emailInput = TextEditingController();
 
   @override
@@ -31,12 +34,16 @@ class _ForgottenColumnState extends State<ForgottenColumn> {
         const Padding(padding: EdgeInsets.all(10)),
         NormalInputField(
           data: Theme.of(context),
-          title: 'Email Address',
+          title: LocaleKeys.login_username.tr(),
           controller: emailInput,
           onChanged: (text) {},
         ),
         const Padding(padding: EdgeInsets.all(10)),
-        CircularButton(title: _title, onPressed: () async {}),
+        CircularButton(
+            title: _title,
+            onPressed: () async {
+              SupabaseHelper().forgottenUserPass(emailInput.text);
+            }),
       ],
     );
   }

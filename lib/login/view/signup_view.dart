@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/core/constants.dart';
 import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
@@ -75,7 +76,7 @@ class _RegisterFormState extends AuthState<RegisterForm> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBarCustom(title: 'Signup', context: context),
+      appBar: AppBarCustom(title: LocaleKeys.signup_signup.tr(), context: context),
       body: SingleChildScrollView(
         //  padding: CustomPadding.normalHorizontal(),
         child: Stack(
@@ -97,14 +98,14 @@ class _RegisterFormState extends AuthState<RegisterForm> {
                   Padding(padding: CustomPadding()),
                   NormalInputField(
                     data: Theme.of(context),
-                    title: 'Username',
+                    title: LocaleKeys.signup_username.tr(),
                     controller: usernameInput,
                     onChanged: (text) {},
                   ),
                   Padding(padding: CustomPadding()),
                   PasswordInputField(
                       controller: passwordInput,
-                      title: 'Password',
+                      title: LocaleKeys.signup_repassword.tr(),
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -123,7 +124,7 @@ class _RegisterFormState extends AuthState<RegisterForm> {
                   Padding(padding: CustomPadding()),
                   PasswordInputField(
                       controller: repasswordInput,
-                      title: 're password',
+                      title: LocaleKeys.login_password.tr(),
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -141,7 +142,7 @@ class _RegisterFormState extends AuthState<RegisterForm> {
                       obscureText: hidePassword),
                   Padding(padding: CustomPadding()),
                   CircularButton(
-                    title: 'signup',
+                    title: LocaleKeys.signup_signup.tr(),
                     onPressed: () async {
                       _signUp();
                     },
