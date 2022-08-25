@@ -174,7 +174,7 @@ class _LoginViewState extends AuthState<LoginView>
                           data: Theme.of(context),
                           obscureText: hidePassword),
                       const Padding(padding: EdgeInsets.all(5)),
-                   /*   GestureDetector(
+                   GestureDetector(
                         child: Container(
                           width: size.width * 0.6,
                           child: Text(LocaleKeys.login_forgotText.tr(),
@@ -186,7 +186,7 @@ class _LoginViewState extends AuthState<LoginView>
                         onTap: () {
                           const UserSelectSheet().show(context);
                         },
-                      ), */
+                      ),
                       Padding(padding: CustomPadding()),
                       CircularButton(
                         title: LocaleKeys.login_sign.tr(),

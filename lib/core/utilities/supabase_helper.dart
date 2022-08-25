@@ -21,8 +21,7 @@ class SupabaseHelper {
     final res = await supaClient.auth.signIn(email: email, password: password);
     return res;
   }
-/*
-TODO
+
 
    Future<GotrueJsonResponse> forgottenUserPass(
       String email) async {
@@ -30,7 +29,7 @@ TODO
                 ? null : 'io.supabase.flutterquickstart://login-callback/'));
     //const { data, error } = await supabase.auth.api.resetPasswordForEmail(emailInput);
     return res;
-  }*/
+  }
 
 // phone auth with password and verification step
   Future<GotrueSessionResponse> createNewPhoneUser(

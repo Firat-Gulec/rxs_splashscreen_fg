@@ -25,7 +25,7 @@ class AuthState<T extends StatefulWidget> extends SupabaseAuthState<T> {
   @override
   void onPasswordRecovery(Session session) {
     if (mounted) {
-      navigation.navigateToPage(path: NavigationConstants.ON_BOARD);
+      
     }
   }
 

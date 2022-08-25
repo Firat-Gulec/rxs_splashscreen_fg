@@ -42,7 +42,7 @@ class _ForgottenColumnState extends AuthState<ForgottenColumn> {
         CircularButton(
             title: _title,
             onPressed: () async {
-             // SupabaseHelper().forgottenUserPass(emailInput.text);
+              SupabaseHelper().forgottenUserPass(emailInput.text);
             }),
       ],
     );
