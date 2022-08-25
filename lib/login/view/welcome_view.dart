@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/cache/cache_manager.dart';
 
 
 import 'package:shared_preferences/shared_preferences.dart';

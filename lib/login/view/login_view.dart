@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:rxs_spashscreen_fg/core/Init/lang/locale_keys.g.dart';
-import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/cache/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
 import 'package:rxs_spashscreen_fg/core/widget/icon/circular_button.dart';
 import 'package:rxs_spashscreen_fg/login/model/social_login_interface.dart';
@@ -14,7 +14,7 @@ import 'package:rxs_spashscreen_fg/core/widget/padding/custom_padding.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/or_divider.dart';
 import 'package:rxs_spashscreen_fg/core/widget/sheet/select_sheet.dart';
 
-import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_state.dart';
 import 'package:rxs_spashscreen_fg/login/view/signup_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
@@ -27,14 +27,14 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends AuthState<LoginView>
     with CacheManager, SingleTickerProviderStateMixin {
-  final String loginProvider = 'email';
+
   // final ISocialLogin _twitterLogin = TwitterLogin();
 
   Future<void> _checknamepassControl(String name, String password) async {
     await Future.delayed(const Duration(seconds: 1));
     if (password == "") {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Kullanici adi veya Şifre boş geçilemez!"),
+        content: Text(LocaleKeys.login_incorrect.tr()),
       ));
     } else {
       final res = await SupabaseHelper().signinExitingUser(name, password);
@@ -51,6 +51,7 @@ class _LoginViewState extends AuthState<LoginView>
   final TextEditingController passwordInput = TextEditingController();
   bool hidePassword = true;
   bool hideLogin = false;
+ 
 
 //Animation Controller ...
   late AnimationController animationController;
@@ -176,7 +177,7 @@ class _LoginViewState extends AuthState<LoginView>
                       GestureDetector(
                         child: Container(
                           width: size.width * 0.6,
-                          child: Text("Şifremi Unuttum",
+                          child: Text(LocaleKeys.login_forgotText.tr(),
                               textAlign: TextAlign.right,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -188,7 +189,7 @@ class _LoginViewState extends AuthState<LoginView>
                       ),
                       Padding(padding: CustomPadding()),
                       CircularButton(
-                        title: "Oturum Aç",
+                        title: LocaleKeys.login_sign.tr(),
                         onPressed: () async {
                           setState(() {
                             _checknamepassControl(
@@ -203,10 +204,10 @@ class _LoginViewState extends AuthState<LoginView>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Hesabin yok mu?"),
+                          Text(LocaleKeys.login_dontAccount.tr()),
                           const Padding(padding: EdgeInsets.all(5)),
                           GestureDetector(
-                            child: Text("Kaydol",
+                            child: Text(LocaleKeys.login_signup.tr(),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold)),
                             onTap: () {

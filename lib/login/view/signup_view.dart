@@ -12,7 +12,8 @@ import 'package:rxs_spashscreen_fg/core/widget/input/password_input_field.dart';
 import 'package:rxs_spashscreen_fg/core/widget/padding/custom_padding.dart';
 import 'package:rxs_spashscreen_fg/login/view/account_page.dart';
 import 'package:rxs_spashscreen_fg/login/view/login_view.dart';
-import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_state.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 class RegisterForm extends StatefulWidget {

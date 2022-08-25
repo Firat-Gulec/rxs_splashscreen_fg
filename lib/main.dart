@@ -7,7 +7,7 @@ import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_route.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_service.dart';
 import 'package:rxs_spashscreen_fg/core/Init/provider/theme_provider.dart';
 
-import 'package:rxs_spashscreen_fg/core/auth_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_manager.dart';
 import 'package:rxs_spashscreen_fg/core/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 

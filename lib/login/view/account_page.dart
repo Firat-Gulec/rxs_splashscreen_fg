@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rxs_spashscreen_fg/core/auth_require_state.dart';
-import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_require_state.dart';
+import 'package:rxs_spashscreen_fg/core/Init/cache/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/constants.dart';
 import 'package:supabase/supabase.dart';
 

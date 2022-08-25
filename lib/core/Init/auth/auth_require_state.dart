@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'Init/navigation/navigation_service.dart';
+
 
 class AuthRequiredState<T extends StatefulWidget>
     extends SupabaseAuthRequiredState<T> {

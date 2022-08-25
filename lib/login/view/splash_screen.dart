@@ -3,14 +3,15 @@
 import 'dart:async';
 import 'package:casbin/casbin.dart';
 import 'package:flutter/material.dart';
-import 'package:rxs_spashscreen_fg/core/auth_state.dart';
+
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_state.dart';
 import 'package:rxs_spashscreen_fg/core/utilities/supabase_helper.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 import 'package:provider/src/provider.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_constants.dart';
 import 'package:rxs_spashscreen_fg/core/Init/navigation/navigation_service.dart';
-import 'package:rxs_spashscreen_fg/core/auth_manager.dart';
-import 'package:rxs_spashscreen_fg/core/cache_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/auth/auth_manager.dart';
+import 'package:rxs_spashscreen_fg/core/Init/cache/cache_manager.dart';
 import 'package:rxs_spashscreen_fg/core/model/user_model.dart';
 import 'package:rxs_spashscreen_fg/login/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
