@@ -31,7 +31,7 @@ class AuthState<T extends StatefulWidget> extends SupabaseAuthState<T> {
 
   @override
   void onErrorAuthenticating(String message) {
-    context.showErrorSnackBar(message: message);
+   // context.showErrorSnackBar(message: message);
     print(message);
   }
 }
